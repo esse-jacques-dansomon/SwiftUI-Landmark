@@ -9,11 +9,32 @@
 import SwiftUI
 
 struct CategoryItem: View {
+    var landmark: Landmark
+    var round  = 15
+    var isFullWidth = false
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            landmark.image
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                .frame(
+                    width: isFullWidth ? .infinity : 150,
+                    height: isFullWidth ? 350 : 150
+                )
+                
+                .cornerRadius(CGFloat(round))
+            Text(landmark.name)
+                .foregroundStyle(.primary)
+                .font(.caption)
+        }
+        .padding( isFullWidth ? .all : .leading, 15)
     }
 }
 
+
 #Preview {
-    CategoryItem()
+    CategoryItem(landmark: ModelData().landmarks[0])
 }
+

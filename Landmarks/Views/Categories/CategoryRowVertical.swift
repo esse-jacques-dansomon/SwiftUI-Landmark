@@ -22,7 +22,7 @@ struct CategoryRowVertical: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .center,spacing: 0){
                     ForEach(items) { landmark in
-                        CategoryItem(landmark: landmark)
+                        CategoryItem(landmark: landmark,isFullWidth: true)
                     }
                 }
             }
